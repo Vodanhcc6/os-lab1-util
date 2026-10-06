@@ -26,9 +26,15 @@ void
 processInput(int fd)
 {
   char punc[] = " -\r\t\n./,";
+
+  // set to -1 to skip case non digit is at index 0
   int num = -1;
+
   char c;
+
+  // check if current num is valid
   int acptNum = 1;
+
   int n;
   while ((n = read(fd, &c, 1)) > 0) {
     if (c == '\0') {
@@ -40,6 +46,7 @@ processInput(int fd)
       acptNum = 1;
       num = -1;
     } else if (!isdigit(c) || !acptNum) {
+      // mark invalid num
       acptNum = 0;
     } else {
       if (num == -1)
@@ -48,6 +55,7 @@ processInput(int fd)
     }
   }
 
+  // process trailing num
   if (acptNum) {
     printSixFive(num);
   }
@@ -58,9 +66,12 @@ main(int argc, char *argv[])
 {
   int fd;
 
+  // receive input directly from standard input
   if (argc == 1) {
     processInput(0);
-  } else {
+  }
+  // receive from file
+  else {
     int i = 0;
     while (++i < argc) {
       if ((fd = open(argv[i], O_RDONLY)) < 0) {
