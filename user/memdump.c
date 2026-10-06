@@ -64,6 +64,7 @@ printError(char c)
   exit(1);
 }
 
+// check if enough data for fmt
 void
 checkSafeLen(int *len, int bytes, char c)
 {
@@ -80,35 +81,40 @@ memdump(char *fmt, char *data, int len)
     if (*p == 'i') {
       checkSafeLen(&len, sizeof(int), 'i');
 
+      // print next 4 bytes as 32 bit integer in decimal
       printf("%d\n", *(int *)data);
       data += sizeof(int);
     }
     if (*p == 'p') {
       checkSafeLen(&len, sizeof(uint64), 'p');
 
+      // print next 8 bytes as 64 bit integer in hex
       printf("%lx\n", *(uint64 *)data);
       data += sizeof(uint64);
     }
     if (*p == 'h') {
       checkSafeLen(&len, sizeof(short), 'h');
 
+      // print next 2 bytes as 16 bit integer in decimal
       printf("%d\n", *(short *)data);
       data += sizeof(short);
     }
     if (*p == 'c') {
       checkSafeLen(&len, sizeof(char), 'c');
 
+      // print next 1 bytes as 8 bit ASCII
       printf("%c\n", *data);
       data += sizeof(char);
     }
     if (*p == 's') {
       checkSafeLen(&len, sizeof(char *), 's');
 
-      char *str = *(char **)data;
-      printf("%s\n", str);
+      // print the string having next 8 bytes of the data contain a 64 bit pointer to a C string
+      printf("%s\n", *(char **)data);
       data += sizeof(char *);
     }
     if (*p == 'S') {
+      // print rest of the string having the bytes of a nul-terminated C string
       printf("%s\n", data);
       len = 0;
     }
