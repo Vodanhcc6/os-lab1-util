@@ -1,3 +1,33 @@
+* commit d8bd7230908e7ddb652b70a229346455020e1e5c
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Tue Oct 6 22:16:25 2026 +0700
+| 
+|     Updated exercise 4 to finish exercise 5
+| 
+|  user/find.c | 58 +++++++++++++++++++++++++++++++++++++++++++++++++++-------
+|  1 file changed, 51 insertions(+), 7 deletions(-)
+| 
+* commit 70d01cf1f5f22de89cb938eedfac4e3f60be2924
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Tue Oct 6 21:18:31 2026 +0700
+| 
+|     Finish exercise 4
+| 
+|  Makefile       |  1 +
+|  kernel/param.h |  2 --
+|  kernel/riscv.h |  2 --
+|  user/find.c    | 74 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  4 files changed, 75 insertions(+), 4 deletions(-)
+| 
+* commit 8de4bc854fa654214f6b377a021685405c21332b
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Tue Oct 6 12:43:55 2026 +0700
+| 
+|     Created log.txt to contains git log
+| 
+|  log.txt | 19630 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+|  1 file changed, 19630 insertions(+)
+| 
 * commit 0bb8d26cc25736824011fc6f55a323f856b7d9e4
 | Author: Vodanhcc6 <nambp.ti.2124@gmail.com>
 | Date:   Tue Oct 6 12:36:30 2026 +0700
