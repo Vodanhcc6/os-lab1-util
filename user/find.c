@@ -14,15 +14,16 @@ Execute(char *new_argv[])
     fprintf(2, "fork failed\n");
     exit(1);
   } else if (pid == 0) {
+    // exec the children process
     exec(new_argv[0], new_argv);
 
+    // if exec dont return then it failed
     fprintf(2, "exec failed\n");
     exit(1);
   } else {
+    // wait for children process to finish
     wait(0);
   }
-
-  return;
 }
 
 void
@@ -44,6 +45,7 @@ find(char *path, char *target, char *execOption[], int execOptionArgc)
     return;
   }
 
+  // if this path is a directory
   if (st.type == T_DIR) {
     if (strlen(path) + 1 + DIRSIZ + 1 > sizeof(buf)) {
       printf("find: path too long\n");
@@ -56,17 +58,23 @@ find(char *path, char *target, char *execOption[], int execOptionArgc)
     *p++ = '/';
 
     while (read(fd, &de, sizeof(de)) == sizeof(de)) {
-      if (de.inum == 0 || strcmp(de.name, ".") == 0 ||
-          strcmp(de.name, "..") == 0) {
+      if (de.inum == 0) {
         continue;
       }
 
       memmove(p, de.name, DIRSIZ);
       p[DIRSIZ] = 0;
 
-      if (strcmp(de.name, target) == 0) {
+      // stop recurse into "." and ".."
+      if (strcmp(p, ".") == 0 || strcmp(p, "..") == 0) {
+        continue;
+      }
+
+      // if match the target
+      if (strcmp(p, target) == 0) {
         if (execOption != 0) {
-          if (execOptionArgc + strlen(buf) > MAXARG) {
+          // checks argument count
+          if (execOptionArgc + 2 > MAXARG) {
             printf("exec: arguments too long\n");
           } else {
             execOption[execOptionArgc] = buf;
@@ -79,17 +87,18 @@ find(char *path, char *target, char *execOption[], int execOptionArgc)
         }
       }
 
+      // stat this file (directory)
       if (stat(buf, &st) < 0) {
         printf("find: cannot stat %s\n", buf);
         continue;
       }
 
+      // continue recurse if this is directory
       if (st.type == T_DIR) {
         find(buf, target, execOption, execOptionArgc);
       }
     }
   }
-
   close(fd);
 }
 
@@ -109,7 +118,10 @@ main(int argc, char *argv[])
       for (int i = 4; i < argc; i++) {
         *p++ = argv[i];
       }
-      p = 0;
+
+      // add the null-terminated
+      *p = 0;
+
       find(argv[1], argv[2], new_argv, argc - 4);
     }
   }
