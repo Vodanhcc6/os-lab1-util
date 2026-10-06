@@ -58,8 +58,59 @@ main(int argc, char *argv[])
 }
 
 void
+printError(char c)
+{
+  fprintf(2, "memdump: not enough data for '%c'\n", c);
+  exit(1);
+}
+
+void
+checkSafeLen(int *len, int bytes, char c)
+{
+  if (*len - bytes < 0) {
+    printError(c);
+  } else
+    *len -= bytes;
+}
+
+void
 memdump(char *fmt, char *data, int len)
 {
-  // Your code here.  `data` holds `len` valid bytes.
+  for (char *p = fmt; *p != '\0'; p++) {
+    if (*p == 'i') {
+      checkSafeLen(&len, sizeof(int), 'i');
 
+      printf("%d\n", *(int *)data);
+      data += sizeof(int);
+    }
+    if (*p == 'p') {
+      checkSafeLen(&len, sizeof(uint64), 'p');
+
+      printf("%lx\n", *(uint64 *)data);
+      data += sizeof(uint64);
+    }
+    if (*p == 'h') {
+      checkSafeLen(&len, sizeof(short), 'h');
+
+      printf("%d\n", *(short *)data);
+      data += sizeof(short);
+    }
+    if (*p == 'c') {
+      checkSafeLen(&len, sizeof(char), 'c');
+
+      printf("%c\n", *data);
+      data += sizeof(char);
+    }
+    if (*p == 's') {
+      checkSafeLen(&len, sizeof(char *), 's');
+
+      char *str = *(char **)data;
+      printf("%s\n", str);
+      data += sizeof(char *);
+    }
+    if (*p == 'S') {
+      printf("%s\n", data);
+      len = 0;
+    }
+  }
 }
