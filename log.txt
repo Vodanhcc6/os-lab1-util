@@ -1,3 +1,48 @@
+* commit 10a34bf066c7099929d605ddba648c5d4281c9f1
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Wed Oct 7 00:36:13 2026 +0700
+| 
+|     add comment and fix checking argument count, add null-terminated for p
+| 
+|  user/find.c | 28 ++++++++++++++++++++--------
+|  1 file changed, 20 insertions(+), 8 deletions(-)
+| 
+* commit ed4dc1fb4378aeaaa5979546c4d0db691a0d292f
+| Author: Vodanhcc6 <nambp.ti.2124@gmail.com>
+| Date:   Wed Oct 7 00:02:15 2026 +0700
+| 
+|     add comment for exercise 3
+| 
+|  user/memdump.c | 10 ++++++++--
+|  1 file changed, 8 insertions(+), 2 deletions(-)
+| 
+* commit 1980be4424b273edb20bb611513683ed377f7d64
+| Author: Vodanhcc6 <nambp.ti.2124@gmail.com>
+| Date:   Tue Oct 6 23:51:12 2026 +0700
+| 
+|     add comment for exercise 2
+| 
+|  user/sixfive.c | 13 ++++++++++++-
+|  1 file changed, 12 insertions(+), 1 deletion(-)
+| 
+* commit 2ceb0e31a4a3433f0a66ea2de7500a792f933276
+| Author: Vodanhcc6 <nambp.ti.2124@gmail.com>
+| Date:   Tue Oct 6 23:14:00 2026 +0700
+| 
+|     Add comment to sleep
+| 
+|  user/sleep.c | 2 ++
+|  1 file changed, 2 insertions(+)
+| 
+* commit 9f891d2984d6d75a75c505511eb1f5af183c917e
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Tue Oct 6 22:25:26 2026 +0700
+| 
+|     Edited recent commit
+| 
+|  log.txt | 9 +++++++++
+|  1 file changed, 9 insertions(+)
+| 
 * commit 83c3403c6e7a86946d1d831f55ee1625123f0ee0
 | Author: Thien <thientong0202@gmail.com>
 | Date:   Tue Oct 6 22:22:51 2026 +0700
