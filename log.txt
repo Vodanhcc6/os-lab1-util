@@ -1,3 +1,21 @@
+* commit ed3a9eb12110eae4302e1831f96a238a7348200d
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Sat Oct 10 23:45:31 2026 +0700
+| 
+|     Change printf to fprintf and add exit(1) in main in error cases find.c
+| 
+|  user/find.c | 6 ++++--
+|  1 file changed, 4 insertions(+), 2 deletions(-)
+| 
+* commit 9bc1eb594f84609966566589eb913a5d1d37fb3b
+| Author: Thien <thientong0202@gmail.com>
+| Date:   Sat Oct 10 23:20:04 2026 +0700
+| 
+|     update log.txt
+| 
+|  log.txt | 9 +++++++++
+|  1 file changed, 9 insertions(+)
+| 
 * commit 1689da33167591e0b8d26471f5fba96809f23f76
 | Author: Thien <thientong0202@gmail.com>
 | Date:   Sat Oct 10 19:21:02 2026 +0700
