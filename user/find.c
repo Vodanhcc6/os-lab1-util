@@ -106,12 +106,14 @@ int
 main(int argc, char *argv[])
 {
   if (argc < 3) {
-    printf("Usage: find <path> <name>\n");
+    fprintf(2, "Usage: find <path> <name>\n");
+    exit(1);
   } else if (argc == 3) {
     find(argv[1], argv[2], 0, 0);
   } else if (argc > 3) {
     if (strcmp(argv[3], "-exec") != 0) {
-      printf("Usage: find <path> <name> -exec <arguments>\n");
+      fprintf(2, "Usage: find <path> <name> -exec <arguments>\n");
+      exit(1);
     } else {
       char *new_argv[MAXARG];
       char **p = new_argv;
